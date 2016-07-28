@@ -1,0 +1,13 @@
+[package]
+name = "nickel-hello"
+version = "0.1.0"
+authors = ["garasubo<garasubo@gmail.com>"]
+
+[dependencies]
+nickel = "*"
+mongodb = "*"
+bson = "*"
+rustc-serialize = "*"
+
+[profile.dev]
+debug = true
