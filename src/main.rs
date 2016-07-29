@@ -108,7 +108,10 @@ fn main() {
             "name" => name,
             "email" => email
         }, None) {
-            Ok(_) => (StatusCode::Ok, "Item saved!"),
+            Ok(result) => (match result.write_exception {
+                None => (StatusCode::Ok, "Item saved!"),
+                Some(e) => (StatusCode::InternalServerError, &*e.message)
+            }),
             Err(e) => return response.send(format!("{}", e))
         }
     });
